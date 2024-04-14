@@ -7,7 +7,11 @@ app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
-const port = 3000
+let port = 3000
+if (process.env.PORT) {
+  port = Number(process.env.PORT)
+}
+
 console.log(`Server is running on port ${port}`)
 
 serve({
