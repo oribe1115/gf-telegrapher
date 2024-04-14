@@ -5,7 +5,8 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.10.0",
-    "hono": "^4.2.3"
+    "hono": "^4.2.3",
+    "tsx": "^4.7.2"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
@@ -13,7 +14,6 @@
     "@typescript-eslint/parser": "^7.6.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.2.5",
-    "tsx": "^4.7.1"
+    "prettier": "^3.2.5"
   }
 }
