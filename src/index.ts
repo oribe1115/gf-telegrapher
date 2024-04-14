@@ -29,6 +29,9 @@ function doPost(e: GoogleAppsScript.Events.DoPost) {
     case 'form-submit':
       // TODO
       break;
+    case 'test':
+      res = e.postData.contents;
+      break;
     default:
       res = {
         error: `unexpected URI: ${path}`,
