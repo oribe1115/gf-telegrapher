@@ -36,7 +36,7 @@ sequenceDiagram
     participant GS as Google Spreadsheet<br>(回答記録用)
     participant traQ
     participant telegrapher as gf-telegrapher
-    participant tele-GS as Google Spreadsheet<br>(情報記録用)
+    participant DB
 
 
     User->>GF: 新規フォームを作成
@@ -62,8 +62,8 @@ sequenceDiagram
 
     telegrapher->>traQ: 回答概要を反映するメッセージを作成
     traQ-->>telegrapher: OK
-    telegrapher->>tele-GS: traQメッセージID、フォームID(、スプレッドシートID)を記録
-    tele-GS-->>telegrapher: OK
+    telegrapher->>DB: traQメッセージID、フォームID(、スプレッドシートID)を記録
+    DB-->>telegrapher: OK
 
     alt 処理に失敗が発生した場合
     telegrapher->>traQ: エラー情報を含むメッセージを投稿
@@ -79,15 +79,15 @@ sequenceDiagram
     actor User as 回答者
     participant GF as Google Form
     participant telegrapher as gf-telegrapher
-    participant tele-GS as Google Spreadsheet<br>(情報記録用)
+    participant DB
     participant traQ
 
     User->>GF: 回答を提出
     GF->>telegrapher: 現時点で全ての回答結果
 
     activate telegrapher
-    telegrapher->>tele-GS: フォームIDに対応する情報を取得
-    tele-GS-->>telegrapher: メッセージID(、スプレッドシートID)
+    telegrapher->>DB: フォームIDに対応する情報を取得
+    DB-->>telegrapher: メッセージID(、スプレッドシートID)
     telegrapher->>telegrapher: メッセージの組み立て
     telegrapher->>traQ: メッセージの更新
     traQ-->>telegrapher: OK
