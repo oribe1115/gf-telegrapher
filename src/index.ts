@@ -13,6 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { hello } from './example-module';
 
-console.log(hello());
+// POST {GASのデプロイURL}/exec/{path} の形式でリクエストされる
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function doPost(e: GoogleAppsScript.Events.DoPost) {
+  const path = e.pathInfo;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let res: any;
+
+  switch (path) {
+    case 'register':
+      // TODO
+      break;
+    case 'form-submit':
+      // TODO
+      break;
+    default:
+      res = {
+        error: `unexpected URI: ${path}`,
+      };
+      break;
+  }
+
+  return ContentService.createTextOutput(res).setMimeType(
+    ContentService.MimeType.JSON
+  );
+}
